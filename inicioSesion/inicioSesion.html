@@ -1,0 +1,57 @@
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        /*background: url('images/fondo.webp') no-repeat center center fixed;*/
+        background-size: cover;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="#"> <!-- Agregar Direccion de Style.css -->
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="inicio.php" title="Inicio">Inicio</a>
+        </div>
+        <a class="titulo" href="inicio.php">ReeUtil</a>
+        <div class="nav-links">
+            <a class="nav-opctions" href="inicio.php">Inicio</a>
+            <a class="nav-opctions" href="#">Conoce más de ReeUtil</a>
+        </div>
+        <a href="inicioSesion.html">
+            <button class="btn-login">Iniciar Sesión</button>
+        </a>
+    </nav>
+    <form action="../inicioSesion/api/login.php" method="POST"> 
+        <center>
+            <br>
+            <h2>Inicio de Sesión</h2>
+        </center>
+        <p>Ingrese su Correo:<br>
+            <input type="text" name="email" placeholder="Correo" required>
+        </p>
+
+        <p>Ingrese su Contraseña:<br>
+            <input type="password" name="password" placeholder="Contraseña" required>
+        </p>
+
+        <p>Seleccione si es cliente o empleado<br>
+            <!-- selector para cliente Empleado -->
+            <select name="tipo_usuario" title="Seleccione su tipo de usuario" required>
+                <option value="cliente">Cliente</option>
+                <option value="empleado">Trabajador</option>
+            </select>
+        </p>
+        <center>
+            <button type="submit">Iniciar Sesion</button>
+        </center>
+    </form>
+
+
+</body>
