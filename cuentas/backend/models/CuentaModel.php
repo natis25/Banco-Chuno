@@ -1,20 +1,18 @@
 <?php
 require_once __DIR__ . '/../config/db_cuenta.php';
 
-class Account {
+class CuentaModel {
     private $conn;
-    private $table_name = "Cuenta";
+    private $table_name = "cuenta";
 
     public function __construct() {
-        try {
-            $this->conn = getCuentaConnection();
-            // Configurar PDO para que lance excepciones en errores
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ATTR_ERRMODE_EXCEPTION);
-        } catch(PDOException $exception) {
-            // Lanzar excepción para que operations.php la capture
-            throw new Exception("Error de conexión a la base de datos: " . $exception->getMessage());
-        }
+    try {
+        // Solo la conexión básica
+        $this->conn = getCuentaConnection();
+    } catch(PDOException $e) {
+        throw new Exception("Error de conexión: " . $e->getMessage());
     }
+}
 
     /**
      * Obtiene el saldo actual de una cuenta
@@ -28,21 +26,32 @@ class Account {
             $stmt->bindParam(':idCliente', $idCliente, PDO::PARAM_INT);
             $stmt->execute();
             
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$resultado) {
+                throw new Exception("No se encontró la cuenta para el cliente especificado");
+            }
+            
+            // Devolver solo el valor del saldo, no el array completo
+            return $resultado['saldo'];
         } catch(PDOException $e) {
             throw new Exception("Error al obtener saldo: " . $e->getMessage());
         }
     }
-
     /**
      * Realiza un depósito en la cuenta
      * @param int $idCliente ID del cliente
      * @param float $monto Monto a depositar
-     * @return array|false Nuevo saldo o false en error
+     * @return array Nuevo saldo
+     * @throws Exception Si ocurre un error
      */
     public function depositar($idCliente, $monto) {
         try {
-            // Iniciar transacción
+            // Validar monto positivo
+            if ($monto <= 0) {
+                throw new Exception("El monto debe ser positivo");
+            }
+
             $this->conn->beginTransaction();
             
             $query = "UPDATE " . $this->table_name . " 
@@ -50,19 +59,19 @@ class Account {
                       WHERE idCliente = :idCliente";
             
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':monto', $monto, PDO::PARAM_STR);
-            $stmt->bindParam(':idCliente', $idCliente, PDO::PARAM_INT);
+            $stmt->bindValue(':monto', $monto);
+            $stmt->bindValue(':idCliente', $idCliente, PDO::PARAM_INT);
             $stmt->execute();
             
-            // Obtener el nuevo saldo
-            $nuevoSaldo = $this->obtenerSaldo($idCliente);
+            if ($stmt->rowCount() === 0) {
+                throw new Exception("No se actualizó ninguna cuenta");
+            }
             
-            // Confirmar transacción
+            $nuevoSaldo = $this->obtenerSaldo($idCliente);
             $this->conn->commit();
             
             return $nuevoSaldo;
-        } catch(PDOException $e) {
-            // Revertir en caso de error
+        } catch(Exception $e) {
             if ($this->conn->inTransaction()) {
                 $this->conn->rollBack();
             }
@@ -75,17 +84,21 @@ class Account {
      * @param int $idCliente ID del cliente
      * @param float $monto Monto a retirar
      * @return array|false Nuevo saldo o false si no hay fondos
+     * @throws Exception Si ocurre un error
      */
     public function retirar($idCliente, $monto) {
         try {
-            // Verificar saldo primero
+            // Validar monto positivo
+            if ($monto <= 0) {
+                throw new Exception("El monto debe ser positivo");
+            }
+
             $saldoActual = $this->obtenerSaldo($idCliente);
             
-            if (!$saldoActual || $saldoActual['saldo'] < $monto) {
+            if (!$saldoActual || $saldoActual < $monto) {
                 return false;
             }
             
-            // Iniciar transacción
             $this->conn->beginTransaction();
             
             $query = "UPDATE " . $this->table_name . " 
@@ -93,19 +106,19 @@ class Account {
                       WHERE idCliente = :idCliente";
             
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':monto', $monto, PDO::PARAM_STR);
-            $stmt->bindParam(':idCliente', $idCliente, PDO::PARAM_INT);
+            $stmt->bindValue(':monto', $monto);
+            $stmt->bindValue(':idCliente', $idCliente, PDO::PARAM_INT);
             $stmt->execute();
             
-            // Obtener el nuevo saldo
-            $nuevoSaldo = $this->obtenerSaldo($idCliente);
+            if ($stmt->rowCount() === 0) {
+                throw new Exception("No se actualizó ninguna cuenta");
+            }
             
-            // Confirmar transacción
+            $nuevoSaldo = $this->obtenerSaldo($idCliente);
             $this->conn->commit();
             
             return $nuevoSaldo;
-        } catch(PDOException $e) {
-            // Revertir en caso de error
+        } catch(Exception $e) {
             if ($this->conn->inTransaction()) {
                 $this->conn->rollBack();
             }
@@ -113,11 +126,14 @@ class Account {
         }
     }
 
-    // // Cerrar conexión cuando el objeto se destruye
-    // public function __destruct() {
-    //     if ($this->conn) {
-    //         $this->conn = null;
-    //     }
-    // }
+    /**
+     * Cierra la conexión a la base de datos
+     */
+    public function cerrarConexion() {
+        $this->conn = null;
+    }
+
+    public function __destruct() {
+        $this->cerrarConexion();
+    }
 }
-?>
