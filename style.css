@@ -1,21 +1,39 @@
 body {
+    background: url('images/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
-    background: url('images/fondo.webp') no-repeat center center fixed;
-    margin: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.container{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    width: 40%;
+    height: auto;
+    max-height: 85vh;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    margin: 20px 0;
 }
 
 h1{
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 50px;
-    color: #075293;
+    font-size: 70px;
+    color: #ffffff;
     font-weight: 800;
     text-decoration: underline;
 }
 
 h2{
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 35px;
-    color: #075293;
+    font-size: 50px;
+    color: #ffffff;
 }
 
 table {
@@ -44,3 +62,52 @@ tr:nth-child(even) {
 .btn-eliminar:hover {
     text-decoration: underline;
 }
+
+.btn-IS{
+    background-color: #075293;
+    color: white;
+    border-radius: 7px;
+    height: 6%;
+    width: 40%;
+    font-weight: 700;
+    font-size: 20px;
+    border-color: #075293;
+}
+
+.btn-IS:hover{
+    background-color: white;
+    color: #075293;
+    border-color: white;
+}
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.formulario{
+    height: auto;
+    width: 50%;
+    border-radius: 7px;
+    border-color: white;
+}
+
+.cbInicio{
+    height: auto;
+    width: 30%;
+    border-radius: 7px;
+    border-color: white;
+    font-size: 15px;
+}
+
+.dineroImg{
+    height: 15%;
+    width: auto;
+}
+
