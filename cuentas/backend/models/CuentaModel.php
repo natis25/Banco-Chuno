@@ -21,9 +21,9 @@ class CuentaModel {
      */
     public function obtenerSaldo($idCliente) {
         try {
-            $query = "SELECT saldo FROM " . $this->table_name . " WHERE idCliente = :idCliente LIMIT 1";
+            $query = "SELECT saldo FROM " . $this->table_name . " WHERE idCliente = :idCliente";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':idCliente', $idCliente, PDO::PARAM_INT);
+            $stmt->bindParam(':idCliente', $idCliente);
             $stmt->execute();
             
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);

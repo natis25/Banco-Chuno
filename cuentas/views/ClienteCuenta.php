@@ -5,47 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta - Gestión de Saldo</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .saldo-display {
-            font-size: 3.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin: 2rem 0;
-            color: #2c3e50;
-        }
-        .btn-operacion {
-            font-size: 1.2rem;
-            padding: 0.8rem 2rem;
-            margin: 0 1rem;
-        }
-        .btn-depositar {
-            background-color: #2ecc71;
-            border-color: #2ecc71;
-        }
-        .btn-retirar {
-            background-color: #e74c3c;
-            border-color: #e74c3c;
-        }
-        .modal-header {
-            border-bottom: none;
-        }
-        .modal-footer {
-            border-top: none;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="container py-5">
-        <h1 class="text-center mb-4">Mi Cuenta Bancaria</h1>
+    <div id="particles-js"></div>
+    <div class=" py-5 contenedor-principal">
         
-        <!-- Mostrar Saldo -->
-        <div class="saldo-display">
-            $<span id="saldo-actual">1,250.75</span>
-        </div>
+    
+        <div class="container justify-content-center ">
+            
+            <div class="texto-titular justify-content-center estilos-cont-titulo">
+                <h1 class="text-center ">Saldo de mi cuenta:</h1>
+            <!-- Mostrar Saldo -->
+            
+            </div>
+        
+        
+            <div class="saldo-display">
+                <span id="saldo-actual">1,250.75 </span>
+            </div>
         
         <!-- Botones de Operación -->
-        <div class="text-center mb-5">
+        <div class="text-center mt-5 mb-5">
             <button type="button" class="btn btn-primary btn-operacion btn-depositar" data-bs-toggle="modal" data-bs-target="#modalDepositar">
                 <i class="bi bi-plus-circle"></i> Depositar
             </button>
@@ -108,94 +90,123 @@
                 </div>
             </div>
         </div>
+        </div>
+        
     </div>
-
-    <!-- Bootstrap JS y dependencias -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Font Awesome para íconos -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="sourceCC.js"></script>
     
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-// Variable global para el ID del cliente (deberías obtenerlo de tu sistema de autenticación)
-const ID_CLIENTE = 1; // Cambia esto según tu lógica
-
-// Función para formatear números con separadores de miles
-function formatearSaldo(monto) {
-    return parseFloat(monto).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// Cargar saldo inicial desde el backend
-async function cargarSaldo() {
-    try {
-        const response = await fetch(`http://localhost/hackaton/Banco-Chuno/cuentas/backend/api/account_endpoint.php?action=obtener_saldo&id_cliente=${ ID_CLIENTE }`);
-        
-        if (!response.ok) {
-            throw new Error('Error al obtener el saldo');
-        }
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            document.getElementById('saldo-actual').textContent = formatearSaldo(data.saldo);
-            document.getElementById('saldo-disponible').textContent = formatearSaldo(data.saldo);
-        } else {
-            throw new Error(data.error || 'Error desconocido');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al cargar el saldo: ' + error.message);
-    }
-}
-
-// Función para realizar operaciones (conectada al backend)
-async function realizarOperacion(tipo) {
-    const montoInput = tipo === 'depositar' ? 'montoDeposito' : 'montoRetiro';
-    const monto = parseFloat(document.getElementById(montoInput).value);
-    
-    if (isNaN(monto) || monto <= 0) {
-        alert('Por favor ingrese un monto válido');
-        return;
-    }
-
-    try {
-        const response = await fetch('http://localhost/hackaton/Banco-Chuno/cuentas/backend/api/account_endpoint.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+        // Inicialización de partículas.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#3a86ff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3a86ff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
             },
-            body: JSON.stringify({
-                id_cliente: ID_CLIENTE,
-                operacion: tipo,
-                monto: monto
-            })
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
+    </script>
 
-        const resultado = await response.json();
-
-        if (!resultado.success) {
-            throw new Error(resultado.error || "Error en la operación");
-        }
-
-        // Actualizar saldo
-        document.getElementById('saldo-actual').textContent = formatearSaldo(resultado.nuevo_saldo);
-        document.getElementById('saldo-disponible').textContent = formatearSaldo(resultado.nuevo_saldo);
-
-        // Cerrar modal y limpiar formulario
-        const modalId = tipo === 'depositar' ? 'modalDepositar' : 'modalRetirar';
-        const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
-        modal.hide();
-        document.getElementById(`form${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`).reset();
-
-        alert(`¡${tipo.charAt(0).toUpperCase() + tipo.slice(1)} realizado con éxito!`);
-
-    } catch (error) {
-        console.error("Error:", error);
-        alert(`Error: ${error.message}`);
-    }
-}
-
-// Cargar saldo al iniciar la página
-document.addEventListener('DOMContentLoaded', cargarSaldo);
-</script>
 </body>
 </html>

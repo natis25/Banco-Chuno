@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Onest:wght@100..900&display=swap');
+
+
+.contenedor-principal{
+    /* background: radial-gradient(circle at center, 
+                #1A1A3A, 
+                #0A0A2A); */
+    background-color: transparent;
+    height: 100vh;
+    width: 100%;
+}
+
+#particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #01010e 0%, #03030c 50%, #0d0d2c 100%);
+        }
+.estilos-cont-titulo{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px 4px;
+    
+}
+
+.estilos-cont-titulo h1 {
+    background-color: rgba(181, 181, 197, 0.1);
+    border-radius: 10px; 
+    font-family: "Onest";
+    font-weight: 400;
+    cursor: default;
+    padding: 22px 44px;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    
+    position: relative;
+    /* border: 1px 0px 0px 0px solid rgba(77, 213, 255, 0.1); */
+    animation: neonGlow 3s ease-in-out infinite alternate;
+    box-shadow: 0 0 10px rgba(91, 255, 159, 0.2);
+}
+
+@keyframes neonGlow {
+    from {
+        box-shadow: 0 0 5px rgba(74, 170, 253, 0.781),  /* Azul claro */
+                    0 0 4px rgba(128, 245, 245, 0.836);    /* Azul oscuro */
+    }
+    to {
+        box-shadow: 0 0 8px rgba(148, 196, 241, 0.5),
+                    0 0 15px rgba(164, 202, 240, 0.671);
+    }
+}
+
+/* Botones personalizados */
+.btn-primary {
+    font-weight: bold;
+  background-color: transparent;
+  border-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-depositar:hover {
+  background-color: #20df6f;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-retirar:hover {
+  background-color: #ff4828;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* Modales personalizados */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  border-bottom: none;
+  background: linear-gradient(135deg, #4a6baf 0%, #3a5a9f 100%);
+  color: white;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.saldo-display {
+    border-radius: 200px;
+    
+    font-size: 3.4rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+    color: #FFFFFF ;
+}
+.saldo-display span {
+    border-radius: 200px;
+    background: linear-gradient(90deg, #16b36413, #02e66133, #00aa4713);
+    background-size: 200% 100%;
+    font-size: 3.4rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 50px;
+    margin: 0.9rem 0;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    animation: liquidMove 6s ease-in-out infinite;
+}
+
+/* Efecto líquido con gradiente desplazante */
+@keyframes liquidMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Opcional: Añadir brillo dinámico para más realismo */
+
+
+
+
+.btn-operacion {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  margin: 0 1rem;
+}
+.btn-depositar {
+  background-color: #47bb77;
+  border-color: #2ecc71;
+}
+.btn-retirar {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-footer {
+  border-top: none;
+}
