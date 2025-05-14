@@ -28,34 +28,35 @@
 }
 
 .estilos-cont-titulo h1 {
-    background-color: rgba(181, 181, 197, 0.1);
+    background-color: rgba(134, 134, 136, 0.1);
     border-radius: 10px; 
     font-family: "Onest";
-    font-weight: 400;
+    font-size: 1.8rem;
+    font-weight: lighter;
     cursor: default;
-    padding: 22px 44px;
+    padding: 18px 36px;
     color: white;
     text-align: center;
     font-weight: 600;
     
     position: relative;
     /* border: 1px 0px 0px 0px solid rgba(77, 213, 255, 0.1); */
-    animation: neonGlow 3s ease-in-out infinite alternate;
-    box-shadow: 0 0 10px rgba(91, 255, 159, 0.2);
+    animation: neonGlow 8s linear infinite alternate;
+    box-shadow: 0 0 5px rgb(94, 94, 94);
 }
 
 @keyframes neonGlow {
     from {
-        box-shadow: 0 0 5px rgba(74, 170, 253, 0.781),  /* Azul claro */
-                    0 0 4px rgba(128, 245, 245, 0.836);    /* Azul oscuro */
+        box-shadow: 0 0 5px rgba(160, 160, 160, 0.781),  /* Azul claro */
+                    0 0 4px rgba(99, 99, 99, 0.836);    /* Azul oscuro */
     }
     to {
-        box-shadow: 0 0 8px rgba(148, 196, 241, 0.5),
-                    0 0 15px rgba(164, 202, 240, 0.671);
+        box-shadow: 0 0 8px rgba(83, 81, 81, 0.5),
+                    0 0 10px rgba(50, 50, 61, 0.671);
     }
 }
 
-/* Botones personalizados */
+/* Botones personalizados */    
 .btn-primary {
     font-weight: bold;
   background-color: transparent;
