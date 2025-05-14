@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: white;
+    background: url('images/fondo.webp') no-repeat center center fixed;
     margin: 20px;
 }
 
