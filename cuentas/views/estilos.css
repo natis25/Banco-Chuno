@@ -45,8 +45,8 @@
     position: relative;
     border: #4e86ee solid 2px;
     /* border: 1px 0px 0px 0px solid rgba(77, 213, 255, 0.1); */
-    animation: neonGlow 3s linear infinite alternate; */
-    box-shadow: 0 0 5px #093cc9; */
+    animation: neonGlow 3s linear infinite alternate; 
+    box-shadow: 0 0 5px #093cc9; 
 }
 
 @keyframes neonGlow {
