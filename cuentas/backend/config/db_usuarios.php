@@ -1,7 +1,7 @@
 <?php
 function getUsuarioConnection() {
     $host = "localhost";
-    $db_name = "usuarios";
+    $db_name = "usuarios"; // Cambiar el nombre a "usuario"
     $username = "amdin";
     $password = "admin";
 

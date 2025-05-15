@@ -1,9 +1,9 @@
 <?php
 function getCuentaConnection() {
     $host = "localhost";
-    $db_name = "Cuenta";
-    $username = "admin";
-    $password = "admin";
+    $db_name = "Cuenta"; // Cambia el nombre si es necesario
+    $username = "admin"; //Usa tu usuario 
+    $password = "admin"; // Usa tu contraseña
 
     try {
         $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);

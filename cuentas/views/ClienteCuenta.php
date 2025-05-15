@@ -16,14 +16,14 @@
         <div class="container justify-content-center ">
             
             <div class="texto-titular justify-content-center estilos-cont-titulo">
-                <h1 class="text-center ">Saldo de mi cuenta:</h1>
+                <h1 class="text-center ">SALDO EN MI CUENTA:</h1>
             <!-- Mostrar Saldo -->
             
             </div>
         
         
             <div class="saldo-display">
-                <span id="saldo-actual">1,250.75 </span>
+                <span id="saldo-actual">1,250.75</span>
             </div>
         
         <!-- Botones de Operación -->

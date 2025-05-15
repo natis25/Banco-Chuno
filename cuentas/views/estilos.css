@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Onest:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
 
 
 .contenedor-principal{
@@ -28,31 +28,35 @@
 }
 
 .estilos-cont-titulo h1 {
-    background-color: rgba(134, 134, 136, 0.1);
-    border-radius: 10px; 
-    font-family: "Onest";
+    background: linear-gradient(135deg, #00c6fb 0%, #4e86ee 50%, #005bea 100%);
+    border-radius: 0px; 
+    font-family: "Sarala";
     font-size: 1.8rem;
     font-weight: lighter;
     cursor: default;
-    padding: 18px 36px;
-    color: white;
+    padding: 15px 40px;
     text-align: center;
     font-weight: 600;
-    
+    border-radius: 10px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     position: relative;
+    border: #4e86ee solid 2px;
     /* border: 1px 0px 0px 0px solid rgba(77, 213, 255, 0.1); */
-    animation: neonGlow 8s linear infinite alternate;
-    box-shadow: 0 0 5px rgb(94, 94, 94);
+    animation: neonGlow 3s linear infinite alternate; */
+    box-shadow: 0 0 5px #093cc9; */
 }
 
 @keyframes neonGlow {
     from {
-        box-shadow: 0 0 5px rgba(160, 160, 160, 0.781),  /* Azul claro */
-                    0 0 4px rgba(99, 99, 99, 0.836);    /* Azul oscuro */
+        box-shadow: 0 0 5px #4284c5,  /* Azul claro */
+                    0 0 4px #012346;    /* Azul oscuro */
     }
     to {
-        box-shadow: 0 0 8px rgba(83, 81, 81, 0.5),
-                    0 0 10px rgba(50, 50, 61, 0.671);
+        box-shadow: 0 0 8px #2748a1,
+                    0 0 10px #011957;
     }
 }
 
@@ -65,14 +69,14 @@
 }
 
 .btn-depositar:hover {
-  background-color: #20df6f;
+  background-color: #0e4e57;
   border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .btn-retirar:hover {
-  background-color: #ff4828;
+  background-color: #9e2424;
   border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -101,8 +105,8 @@
     color: #FFFFFF ;
 }
 .saldo-display span {
-    border-radius: 200px;
-    background: linear-gradient(90deg, #16b36413, #02e66133, #00aa4713);
+    border-radius: 30px;
+    background: linear-gradient(90deg, #0c9450c2, #31e77dc2, #04923fc2);
     background-size: 200% 100%;
     font-size: 3.4rem;
     font-weight: bold;
@@ -124,21 +128,22 @@
 
 /* Opcional: Añadir brillo dinámico para más realismo */
 
-
-
-
 .btn-operacion {
   font-size: 1.2rem;
   padding: 0.8rem 2rem;
   margin: 0 1rem;
 }
 .btn-depositar {
-  background-color: #47bb77;
-  border-color: #2ecc71;
+  border-radius: 64px;
+  background-color: #008d76e5;
+  border-color: transparent;
+  animation: ease-in;
 }
 .btn-retirar {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
+  border-radius: 64px;
+  background-color: #ca3636ec;
+  border-color: transparent;
+  animation: ease-in;
 }
 .modal-header {
   border-bottom: none;
