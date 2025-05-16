@@ -26,7 +26,7 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows > 0) {
-    echo "<table>";
+    echo "<table class='styled-table'>";
     echo "<tr><th>Nombre del Cliente</th><th>ID de Cuenta</th><th>Saldo</th></tr>";
     while ($fila = $resultado->fetch_assoc()) {
         echo "<tr>
