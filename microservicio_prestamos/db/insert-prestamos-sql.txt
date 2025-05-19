@@ -1,0 +1,91 @@
+INSERT INTO tipos_periodo (nombre) VALUES 
+('Mensual'),
+('Trimestral'),
+('Semestral'),
+('Anual');
+
+INSERT INTO tasas_interes (nombre, porcentaje) VALUES 
+('Tasa Normal', 10.00),
+('Tasa Empresarial', 15.00),
+('Tasa Preferencial', 5.00);
+
+INSERT INTO tipos_prestamo (nombre) VALUES 
+('Hipotecario'),
+('Vehicular'),
+('Consumo'),
+('Empresarial'),
+('Educativo');
+
+-- Asignamos duraciones aleatorias entre 4-10 para cada tipo de período
+INSERT INTO plazos_prestamos (duracion, tipo_periodo_id) VALUES 
+-- Mensual (ID 1): 4-10 meses
+(FLOOR(4 + RAND() * 7), 1),  -- Ej: 7 meses
+(FLOOR(4 + RAND() * 7), 1),  -- Ej: 5 meses
+
+-- Trimestral (ID 2): 4-10 trimestres (1-2.5 años)
+(FLOOR(4 + RAND() * 7), 2),  -- Ej: 6 trimestres
+(FLOOR(4 + RAND() * 7), 2),  -- Ej: 9 trimestres
+
+-- Semestral (ID 3): 4-10 semestres (2-5 años)
+(FLOOR(4 + RAND() * 7), 3),  -- Ej: 5 semestres
+(FLOOR(4 + RAND() * 7), 3),  -- Ej: 8 semestres
+
+-- Anual (ID 4): 4-10 años
+(FLOOR(4 + RAND() * 7), 4),  -- Ej: 6 años
+(FLOOR(4 + RAND() * 7), 4);  -- Ej: 4 años
+
+
+INSERT INTO comisiones (nombre, monto, es_porcentaje) VALUES 
+('Comisión por apertura', 200.00, FALSE),       -- Monto fijo
+('Comisión por mora', 5.00, TRUE),             -- 5% del monto adeudado
+('Comisión administrativa anual', 150.00, FALSE);
+
+INSERT INTO puntajes_crediticios (nivel, descripcion, puntaje_minimo, puntaje_maximo) VALUES 
+('A', 'Excelente historial crediticio. Cliente preferencial.', 801, 900),
+('B', 'Buen historial crediticio. Riesgo bajo.', 601, 800),
+('C', 'Historial crediticio regular. Riesgo moderado.', 401, 600),
+('D', 'Historial crediticio deficiente. Riesgo alto.', 201, 400),
+('E', 'Sin historial crediticio o muy riesgoso.', 1, 200);
+
+INSERT INTO condiciones_contrato (nombre, descripcion) VALUES 
+('Penalización por pago anticipado', 'Cargo del 2% sobre el saldo pendiente si se paga antes del plazo pactado.'),
+('Seguro de desgravamen obligatorio', 'El cliente debe contratar un seguro que cubra el saldo del préstamo.'),
+('Refinanciamiento permitido', 'Posibilidad de renegociar el préstamo después de 6 meses de buen comportamiento.'),
+('Notificación por incumplimiento', 'Después de 15 días de mora, se reportará a centrales de riesgo.');
+
+INSERT INTO estados_prestamo (nombre) VALUES 
+('Activo'),
+('Cancelado'),
+('Pagado');
+
+
+-- Prestamos de prueba
+
+INSERT INTO prestamos (
+    usuario_externo_id, 
+    tipo_prestamo_id, 
+    monto_total, 
+    plazo_prestamo_id, 
+    tasa_interes_id, 
+    puntaje_crediticio_id, 
+    fecha_inicio, 
+    fecha_fin, 
+    estado_id
+) VALUES 
+-- Préstamo 1: Hipotecario (ID 1), 6 años, Tasa Normal
+(1, 1, 150000.00, 7, 1, 2, '2023-06-01', '2029-06-01', 1),
+
+-- Préstamo 2: Vehicular (ID 2), 7 meses, Tasa Preferencial
+(2, 2, 30000.00, 1, 3, 1, '2024-01-01', '2024-08-01', 1),
+
+-- Préstamo 3: Consumo (ID 3), 5 semestres, Tasa Empresarial
+(3, 3, 5000.00, 5, 2, 3, '2024-03-15', '2026-09-15', 3),
+
+-- Préstamo 4: Educativo (ID 5), 4 años, Tasa Normal
+(4, 5, 20000.00, 8, 1, 4, '2024-02-01', '2028-02-01', 1),
+
+-- Préstamo 5: Empresarial (ID 4), 9 trimestres, Tasa Empresarial
+(5, 4, 75000.00, 4, 2, 5, '2023-12-01', '2026-03-01', 2),
+
+-- Préstamo 6: Hipotecario (ID 1), 8 semestres, Tasa Preferencial
+(6, 1, 200000.00, 6, 3, 2, '2024-05-01', '2032-05-01', 1);
