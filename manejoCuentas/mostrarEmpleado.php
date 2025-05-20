@@ -1,3 +1,4 @@
+<?php include '../navbar/navbarEmpleado.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet:wght@100..400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
+        
 </head>
 
 <body>

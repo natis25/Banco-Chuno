@@ -7,39 +7,59 @@ if (!isset($_GET['id'])) {
 
 $idCliente = intval($_GET['id']);
 
-$conexion = new mysqli("localhost", "root", "", "cuenta");
+// Conexión a la base de datos de cuentas
+$conexionCuentas = new mysqli("localhost", "root", "", "cuenta");
 
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+if ($conexionCuentas->connect_error) {
+    die("Error de conexión a cuentas: " . $conexionCuentas->connect_error);
 }
 
-$sql = "
-    SELECT c.idCuenta, cl.nombre_cliente, c.saldo
-    FROM cuenta c
-    INNER JOIN cliente cl ON c.idCliente = cl.id_cliente
-    WHERE cl.id_cliente = ?
-";
+// Conexión a la base de datos de clientes
+$conexionClientes = new mysqli("localhost", "root", "", "usuario");
+if ($conexionClientes->connect_error) {
+    die("Error de conexión a clientes: " . $conexionClientes->connect_error);
+}
 
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("i", $idCliente);
-$stmt->execute();
-$resultado = $stmt->get_result();
+// 1. Primero obtenemos la información del cliente
+$sqlCliente = "SELECT nombre_cliente FROM cliente WHERE id_cliente = ?";
+$stmtCliente = $conexionClientes->prepare($sqlCliente);
+$stmtCliente->bind_param("i", $idCliente);
+$stmtCliente->execute();
+$resultadoCliente = $stmtCliente->get_result();
 
-if ($resultado->num_rows > 0) {
+if ($resultadoCliente->num_rows === 0) {
+    die("<p>Cliente no encontrado.</p>");
+}
+
+$cliente = $resultadoCliente->fetch_assoc();
+$nombreCliente = $cliente['nombre_cliente'];
+
+// 2. Luego obtenemos las cuentas del cliente
+$sqlCuentas = "SELECT idCuenta, saldo FROM cuenta WHERE idCliente = ?";
+$stmtCuentas = $conexionCuentas->prepare($sqlCuentas);
+$stmtCuentas->bind_param("i", $idCliente);
+$stmtCuentas->execute();
+$resultadoCuentas = $stmtCuentas->get_result();
+
+if ($resultadoCuentas->num_rows > 0) {
     echo "<table class='styled-table'>";
-    echo "<tr><th>Nombre del Cliente</th><th>ID de Cuenta</th><th>Saldo</th></tr>";
-    while ($fila = $resultado->fetch_assoc()) {
+    echo "<tr><th>Nombre del Cliente</th><th>No. de Cuenta</th><th>Saldo</th></tr>";
+
+    while ($cuenta = $resultadoCuentas->fetch_assoc()) {
         echo "<tr>
-                <td>" . htmlspecialchars($fila["nombre_cliente"]) . "</td>
-                <td>" . htmlspecialchars($fila["idCuenta"]) . "</td>
-                <td>$" . number_format($fila["saldo"], 2) . "</td>
+                <td>" . htmlspecialchars($nombreCliente) . "</td>
+                <td>" . htmlspecialchars($cuenta['idCuenta']) . "</td>
+                <td>Bs." . number_format($cuenta['saldo'], 2) . "</td>
             </tr>";
     }
+
     echo "</table>";
 } else {
     echo "<p>No se encontró ninguna cuenta para este cliente.</p>";
 }
 
-$stmt->close();
-$conexion->close();
-?>
+// Cerrar statements y conexiones
+$stmtCliente->close();
+$stmtCuentas->close();
+$conexionClientes->close();
+$conexionCuentas->close();
