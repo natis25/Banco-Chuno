@@ -48,11 +48,12 @@ $conexionCuenta->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de Cuenta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <?php include '../../navbar/navbarEmpleado.php'; ?>
-    
+    <?php include '../navbar/navbarEmpleado.php'; ?>
+    <br>
+    <br>
     <div class="container mt-4">
         <!-- Encabezado con información de la cuenta -->
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -109,8 +110,8 @@ $conexionCuenta->close();
 
         <!-- Botones de acciones -->
         <div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="depositarCuenta.php?id=<?= $idCuenta ?>&idCliente=<?= $idCliente ?>" class="btn btn-success">Depositar</a>
-            <a href="extraerCuenta.php?id=<?= $idCuenta ?>&idCliente=<?= $idCliente ?>" class="btn btn-danger">Extraer</a>
+            <a href="depositarCuenta.php?idCuenta=<?= $idCuenta ?>&idCliente=<?= $idCliente ?>" class="btn btn-success">Depositar</a>
+            <a href="extraerCuenta.php?idCuenta=<?= $idCuenta ?>&idCliente=<?= $idCliente ?>" class="btn btn-danger">Extraer</a>
             <a href="nuevaTransaccion.php?idCliente=<?= $idCliente ?>&idCuenta=<?= $idCuenta ?>" class="btn btn-primary">Transacción</a>
         </div>
     </div>
