@@ -12,7 +12,7 @@ class SesionModel
   //   $servidor = "localhost";
   //   $usuario = "root";
   //   $contrasena = "";
-  //   $basedatos = "reeutil";
+  //   $basedatos = "usuario";
 
   //   $conexion = new mysqli($servidor, $usuario, $contrasena, $basedatos);
 

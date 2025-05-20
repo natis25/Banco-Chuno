@@ -19,10 +19,11 @@ class SesionController
       // Mostrar el mensaje según el tipo de usuario
       if ($tipoUsuario == 'cliente') {
         // Redirige al archivo mostrarCuentas.php con el ID del cliente
-        header("Location: ../../../manejoCuentas/mostrarCliente.php?id=" . $_SESSION['usuario']['id']);
+        header("Location: ../../manejoCuentas/mostrarCliente.php?id=" . $_SESSION['usuario']['id']);
         exit();
       } else {
-        header("Location: ../../../manejoCuentas/mostrarEmpleado.html");
+        // Redirige al archivo mostrarCuentas.php con el ID del empleado
+        header("Location: ../../manejoCuentas/mostrarEmpleado.php?id=" . $_SESSION['usuario']['id']);
         exit();
       }
     } else {

@@ -15,25 +15,29 @@
     <div class="container">
         <h2>Inicio de Sesión
             <br>
-            <img src="../images/dinero.png" class="dineroImg">
+            <img src="../images/dinero.png" class="dineroImg" alt="Icono de dinero">
         </h2>
-        <form method="POST"></form>
-        <p>Ingrese su Correo:<br><br>
-            <input class="formulario" type="email" name="email" placeholder="Correo" required>
-        </p>
+        <form action="../inicioSesion/api/login.php" method="POST">
+            <p>Ingrese su Correo:<br><br>
+                <input class="formulario" type="email" name="email" placeholder="Correo" required>
+            </p>
 
-        <p>Ingrese su Contraseña:<br><br>
-            <input class="formulario" type="password" name="password" placeholder="Contraseña" required>
-        </p>
+            <p>Ingrese su Contraseña:<br><br>
+                <input class="formulario" type="password" name="password" placeholder="Contraseña" required>
+            </p>
 
-        <p>Seleccione si es cliente o empleado:<br>
-            <br>
-            <select class="cbInicio" name="tipo_usuario" required>
-                <option value="cliente">Cliente</option>
-                <option value="empleado">Trabajador</option>
-            </select>
-        </p>
-        <button class="btn-IS" type="submit">Iniciar Sesion</button>
+            <p>Seleccione si es cliente o empleado:<br>
+                <br>
+                <select class="cbInicio" name="tipo_usuario" title="Seleccione su tipo de usuario" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="empleado">Trabajador</option>
+                </select>
+            </p>
+            <button class="btn-IS" type="submit">Iniciar Sesion</button>
         </form>
+        <p>¿No tienes una cuenta? Regístrate Gratis</p>
+        <a href="nuevoUsuario.php">
+            <button class="btn-R" type="submit">Registrarse</button>
+        </a>
     </div>
 </body>
