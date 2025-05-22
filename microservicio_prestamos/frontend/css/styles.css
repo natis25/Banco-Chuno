@@ -1,0 +1,437 @@
+/* Variables CSS del Archivo 2 (se mantienen por si se usan en partes no sobreescritas) */
+
+
+/* Estilos del body del Archivo 1 */
+body {
+  background: url('../../../images/fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centra el contenido principal si es un único bloque */
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e0ff;
+  /* Propiedades del Archivo 2 que podrían considerarse si no hay conflicto:
+     max-width: 1200px; (Archivo 1 no lo tiene, podría añadirse si es necesario para contenido principal)
+     padding: 20px; (Archivo 1 no lo tiene, podría interferir con el flex-centering)
+  */
+}
+
+/* Estilo de navbar del Archivo 1 (asumiendo que se usará <nav class="navbar"> o similar) */
+.navbar {
+  background-color: #430e93; /* Reemplaza var(--primary-color) para el navbar */
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0; /* Archivo 2 tenía padding para nav, esto lo anula para .navbar */
+  border-radius: 0;
+  z-index: 1000;
+}
+
+/* Estilos de nav y nav a del Archivo 2 (por si se usa un <nav> sin la clase .navbar) */
+/* Estos estilos podrían necesitar ajustes para coexistir con .navbar si ambos se usan */
+nav {
+  background-color: var(--light-color); /* O un color que combine con el estilo del Archivo 1 */
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 30px; /* Ajustar si el navbar es fijo */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--dark-color); /* O un color que combine con el estilo del Archivo 1, ej: #e0e0ff */
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--secondary-color); /* O un color hover del Archivo 1, ej: #563f91 */
+  color: white;
+}
+
+
+/* Estilo de .container del Archivo 1 */
+.container {
+  background: rgba(25, 20, 50, 0.6); /* tono oscuro con transparencia */
+  border-radius: 25px;
+  width: 95vw; /* casi todo el ancho de la pantalla */
+  max-width: 1200px; /* evita que se haga muy grande en pantallas grandes */
+  height: auto;
+  max-height: 90vh; /* evita que sobrepase la altura visible */
+  box-shadow: 0 0 20px rgba(100, 100, 255, 0.3);
+  padding: 2rem; /* Archivo 2 tenía padding: 25px; esto es similar */
+  margin: 2rem auto; /* centrado vertical y horizontal */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(10px);
+  overflow-y: auto; /* scroll interno si se desborda en altura */
+}
+
+/* Estilos de header del Archivo 2 (se mantienen si se usa <header>) */
+/* Se podrían tomar colores de h1/h2 del Archivo 1 si es apropiado */
+header {
+  background-color: transparent ; /* Usando un color del Archivo 1, o mantener var(--primary-color) */
+  color: #e5e0ff; /* Usando color de h1 del Archivo 1 */
+  padding: 20px;
+  border-radius: 5px; /* Archivo 1 no especifica, se puede mantener o quitar */
+  margin-bottom: 20px;
+  text-align: center; /* Ya está en body, pero se puede mantener por especificidad */
+}
+
+/* Estilos de h1 y h2 del Archivo 1 */
+h1 {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 60px;
+  color: #e5e0ff;
+  font-weight: 800;
+  text-decoration: underline;
+  text-shadow: 2px 2px 10px #000;
+}
+
+h2 {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 40px;
+  color: #d0ccff;
+  text-shadow: 1px 1px 5px #000;
+}
+
+/* Estilos de tabla del Archivo 1 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Archivo 2 tenía margin-bottom: 20px */
+  color: #e5e5ff;
+  background-color: rgba(20, 20, 40, 0.6);
+}
+
+th,
+td {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Archivo 2 tenía border-bottom: 1px solid #ddd; */
+  padding: 8px; /* Archivo 2 tenía padding: 12px 15px; */
+  text-align: center; /* Archivo 2 tenía text-align: left; */
+}
+
+th {
+  background-color: rgba(60, 60, 90, 0.8); /* Archivo 2 tenía var(--light-color) */
+  color: #fff;
+  /* font-weight: 600; (Archivo 2) - Archivo 1 no especifica, se puede añadir si se desea */
+}
+
+tr:nth-child(even) {
+  background-color: rgba(40, 40, 70, 0.3);
+}
+
+/* Se elimina tr:hover de Archivo 2 o se adapta al estilo de Archivo 1 si se desea un hover */
+/* tr:hover {
+  background-color: #f5f5f5;
+} */
+
+
+/* Estilos para .styled-table del Archivo 1 (si se usa una tabla con esta clase específica) */
+.styled-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: center;
+  color: #f0f0ff;
+  background-color: rgba(30, 30, 60, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.styled-table th {
+  background-color: rgba(70, 60, 110, 0.9);
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: rgba(50, 50, 80, 0.4);
+}
+
+
+/* Estilos de p y label del Archivo 1 */
+p,
+label {
+  color: #e0e0ff;
+  font-size: 20px;
+  /* Archivo 2 tenía para label: display: block; margin-bottom: 8px; font-weight: 600; */
+  /* Se pueden añadir estas propiedades si son necesarias para la estructura del formulario */
+}
+
+/* Adaptando label del Archivo 2 con el estilo de Archivo 1 */
+label {
+  display: block; /* Del Archivo 2, útil para formularios */
+  margin-bottom: 8px; /* Del Archivo 2 */
+  font-weight: 600; /* Del Archivo 2, o ajustar si Archivo 1 tiene otro énfasis */
+  color: #e0e0ff; /* Del Archivo 1 */
+  font-size: 20px; /* Del Archivo 1 */
+}
+
+/* Estilos de .form-group del Archivo 2 (estructural) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilos de input y select combinando Archivo 1 y Archivo 2 */
+/* Archivo 1 tenía ".formulario, select" */
+/* Usaremos la clase .formulario para inputs de texto y aplicaremos estilos similares a select */
+input.formulario, /* Si tus inputs de texto usan la clase "formulario" */
+input[type="text"], /* Aplicando a tipos comunes también */
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea, /* Considerar textarea también */
+select {
+  width: 90%; /* Del .formulario Archivo 1 */
+  max-width: 400px; /* Del .formulario Archivo 1 */
+  min-width: 180px; /* Del .formulario Archivo 1 */
+  border-radius: 7px; /* Del .formulario Archivo 1 */
+  border: 1px solid white; /* Del .formulario Archivo 1 */
+  background-color: rgba(255, 255, 255, 0.05); /* Del .formulario Archivo 1 */
+  color: white; /* Del .formulario Archivo 1 */
+  font-size: 1.2rem; /* Del .formulario Archivo 1 (aprox 19.2px) */
+  padding: 10px 14px; /* Del .formulario Archivo 1 */
+  margin-bottom: 16px; /* Del .formulario Archivo 1 */
+  box-sizing: border-box; /* Del .formulario Archivo 1 */
+  /* Del Archivo 2 (para input, select): width: 100%; padding: 10px; font-size: 16px; */
+  /* La width del 90% del Archivo 1 es más específica que el 100% del Archivo 2 para estos elementos */
+}
+
+/* Estilos de focus del Archivo 2 (útiles) */
+input.formulario:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #8264ff; /* Un color que combine con el tema, similar a los botones o sombras del Archivo 1 */
+  outline: none;
+  box-shadow: 0 0 10px rgba(130, 100, 255, 0.4); /* Sombra similar a botones de Archivo 1 */
+}
+
+/* Estilos de Botones */
+/* Genéricos de Archivo 2, con colores adaptados del Archivo 1 si es posible */
+button, .btn {
+  padding: 10px 20px; /* Del Archivo 2 */
+  border: none; /* Del Archivo 1 (.btn-IS) y Archivo 2 */
+  border-radius: 7px; /* Del Archivo 1 (.btn-IS) */
+  font-size: 20px; /* Del Archivo 1 (.btn-IS) */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Del Archivo 1 (.btn-IS) y Archivo 2 */
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700; /* Del Archivo 1 (.btn-IS) */
+}
+
+/* Clase .btn-IS del Archivo 1 */
+.btn-IS {
+  background-color: #563f91;
+  color: white;
+  /* border-radius: 7px; ya en button, .btn */
+  height: auto; /* Ajustado de 6% a auto para ser más flexible con padding */
+  width: auto;  /* Ajustado de 45% a auto para ser más flexible con padding, o mantener si es específico */
+  /* font-weight: 700; ya en button, .btn */
+  /* font-size: 20px; ya en button, .btn */
+  /* border: none; ya en button, .btn */
+  /* transition: 0.3s ease; ya en button, .btn */
+  box-shadow: 0 0 10px rgba(130, 100, 255, 0.4);
+}
+
+.btn-IS:hover {
+  background-color: white;
+  color: #563f91;
+  border: 1px solid #563f91;
+}
+
+/* Clase .btn-R del Archivo 1 */
+.btn-R {
+  background-color: white;
+  color: #563f91;
+  border: 1px solid #563f91;
+  /* border-radius: 7px; ya en button, .btn */
+  height: auto; /* Ajustado de 5% a auto */
+  width: auto;  /* Ajustado de 35% a auto */
+  /* font-weight: 700; ya en button, .btn */
+  /* font-size: 20px; ya en button, .btn */
+}
+
+.btn-R:hover {
+  box-shadow: 0 0 10px rgba(130, 100, 255, 0.4);
+  background-color: #563f91;
+  color: white;
+}
+
+/* Estilos para botones de Archivo 2 adaptados */
+.btn-primary { /* Similar a .btn-IS */
+  background-color: #563f91;
+  color: white;
+  box-shadow: 0 0 10px rgba(130, 100, 255, 0.4);
+}
+.btn-primary:hover {
+  background-color: white;
+  color: #563f91;
+  border: 1px solid #563f91;
+  opacity: 1; /* Anular opacity de hover genérico */
+  transform: translateY(-2px); /* Mantener de Archivo 2 */
+}
+
+.btn-success { /* Adaptar con colores del tema de Archivo 1 si hay un "success" look */
+  background-color: var(--success-color); /* Mantener por ahora, o elegir un color del Archivo 1 */
+  color: white;
+}
+
+.btn-danger { /* Podría usar el color de .btn-eliminar:hover */
+  background-color: var(--danger-color); /* Mantener por ahora, o #ff5e5e */
+  color: white;
+}
+.btn-danger:hover {
+  color: white; /* Asegurar que el texto siga siendo legible */
+}
+
+.btn-secondary { /* Adaptar con colores del tema de Archivo 1 */
+  background-color: #a0a0c0; /* Un gris azulado que podría encajar */
+  color: #191432;
+}
+.btn-secondary:hover {
+  background-color: #c0c0e0;
+  color: #191432;
+}
+
+
+/* Hover genérico para botones (Archivo 2), se puede ajustar */
+button:hover, .btn:hover {
+  opacity: 0.9; /* Puede ser redundante si los hovers específicos definen todo */
+  transform: translateY(-2px);
+}
+
+/* Clase .btn-eliminar:hover del Archivo 1 (asumiendo que .btn-eliminar es un botón o enlace) */
+.btn-eliminar:hover {
+  text-decoration: underline;
+  color: #ff5e5e !important; /* Usar !important si es necesario para sobreescribir otros colores de enlace/botón */
+}
+
+
+/* Clases misceláneas del Archivo 1 */
+.cbInicio {
+  width: 30%;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid white;
+  padding: 8px 12px; /* Añadido padding para mejor apariencia */
+}
+
+.dineroImg {
+  height: 15%; /* Esto puede ser muy grande, revisar contexto. Quizás max-height o un valor en px/em */
+  width: auto;
+}
+
+
+/* Alertas del Archivo 2 (se mantienen, se pueden ajustar colores al tema del Archivo 1) */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: none; /* Se mostrará con JS */
+  color: #191432; /* Color de texto oscuro para contraste */
+}
+
+.alert-success {
+  background-color: rgba(100, 255, 100, 0.3); /* Verde translúcido */
+  color: #e0ffe0; /* Texto claro */
+  border: 1px solid rgba(100, 255, 100, 0.5);
+}
+
+.alert-error {
+  background-color: rgba(255, 100, 100, 0.3); /* Rojo translúcido */
+  color: #ffe0e0; /* Texto claro */
+  border: 1px solid rgba(255, 100, 100, 0.5);
+}
+
+/* Acciones de Formulario del Archivo 2 (estructural) */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Loading spinner del Archivo 2 (se mantiene) */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive del Archivo 2 (se mantiene y se ajusta si es necesario) */
+@media (max-width: 768px) {
+  nav:not(.navbar) { /* No aplicar a .navbar si tiene su propio responsive o es fijo */
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  button, .btn { /* Esto hará todos los botones full-width en móvil */
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Ajustes adicionales para móviles según el estilo del Archivo 1 */
+  .container {
+    width: 95vw;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  input.formulario,
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  textarea,
+  select,
+  .cbInicio {
+    width: 100%; /* Hacer formularios full-width en móvil */
+    font-size: 1rem;
+  }
+}

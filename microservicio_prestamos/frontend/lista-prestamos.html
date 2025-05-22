@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Préstamos - Banco Chuno</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Listado de Préstamos</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="lista-prestamos.html">Ver Préstamos</a>
+        <a href="agregar-prestamo.html">Nuevo Préstamo</a>
+    </nav>
+    
+    <div class="container">
+        <div id="mensaje" class="alert"></div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2>Préstamos Registrados</h2>
+            <a href="agregar-prestamo.html" class="btn btn-success">Nuevo Préstamo</a>
+        </div>
+        
+        <table id="tabla-prestamos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Monto</th>
+                    <th>Tipo</th>
+                    <th>Fecha Inicio</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla">
+                <!-- Los datos se cargarán aquí con JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

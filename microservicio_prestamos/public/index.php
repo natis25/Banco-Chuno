@@ -13,7 +13,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Eliminar el subdirectorio del proyecto de la URI (si aplica)
-$base_path = '/hackaton/Banco-Chuno/microservicio_prestamos/public';
+$base_path = '/Banco-Chuno/microservicio_prestamos/public';
 $clean_uri = str_replace($base_path, '', $request_uri);
 $uri_segments = array_values(array_filter(explode('/', $clean_uri)));
 

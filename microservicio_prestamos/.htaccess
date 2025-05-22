@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /hackaton/Banco-Chuno/microservicio_prestamos/
+    RewriteBase /Banco-Chuno/microservicio_prestamos/
 
     # Redirige todo a public/index.php
     RewriteCond %{REQUEST_FILENAME} !-f

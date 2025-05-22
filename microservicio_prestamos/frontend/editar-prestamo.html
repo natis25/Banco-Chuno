@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Préstamo - Banco Chuno</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Editar Préstamo</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="lista-prestamos.html">Ver Préstamos</a>
+        <a href="agregar-prestamo.html">Nuevo Préstamo</a>
+    </nav>
+    
+    <div class="container">
+        <div id="mensaje" class="alert"></div>
+        
+        <h2>Editar Datos del Préstamo</h2>
+        
+        <form id="formulario-prestamo">
+            <input type="hidden" id="prestamo_id">
+            
+            <div class="form-group">
+                <label for="usuario_id">ID de Usuario:</label>
+                <input type="number" id="usuario_id" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="monto">Monto:</label>
+                <input type="number" id="monto" step="0.01" min="100" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de Inicio:</label>
+                <input type="date" id="fecha_inicio" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="fecha_fin">Fecha de Fin:</label>
+                <input type="date" id="fecha_fin" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tipo_prestamo">Tipo de Préstamo:</label>
+                <select id="tipo_prestamo" disabled>
+                    <option value="">Cargando...</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select id="estado" required>
+                    <option value="">Cargando...</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Actualizar Préstamo</button>
+                <a href="lista-prestamos.html" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
